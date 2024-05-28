@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Address Collector</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Email address to send the IP address to
+      const userEmail = 'user@example.com'; // Replace with the actual email or fetch it dynamically
+
+      // Send a POST request to the serverless function
+      fetch('/api/collectIp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: userEmail })
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Welcome to the IP Address Collector</h1>
+</body>
+</html>
